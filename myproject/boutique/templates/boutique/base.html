@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Location Robes de Soirée{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'boutique/css/style.css' %}">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1>DressMe</h1>
+                <ul>
+                    <li><a href="{% url 'accueil' %}">Accueil</a></li>
+                    <li><a href="{% url 'nos_robes' %}">Nos Robes</a></li>
+                    <li><a href="{% url 'ajouter_robe' %}">Ajouter une Robe</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %} {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; DressMe - Location de robes de soirée</p>
+    </footer>
+</body>
+
+</html>

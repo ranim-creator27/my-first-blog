@@ -1,0 +1,29 @@
+{% extends 'boutique/base.html' %} {% load static %} {% block title %}Nos Robes{% endblock %} {% block content %}
+<div class="page-header">
+    <h2>Notre Collection de Robes</h2>
+</div>
+
+<div class="container">
+    <div class="robes-grid">
+        {% for robe in robes %}
+        <div class="robe-card">
+            {% if robe.image %}
+
+            <!--<img src="{% static 'boutique/images/' %}{{ robe.image }}" alt="{{ robe.nom }}">-->
+            <img src="{{ robe.image.url }}" alt="{{ robe.nom }}"> {% else %}
+            <div class="no-image">Pas d'image</div>
+            {% endif %}
+            <h3>{{ robe.nom }}</h3>
+            <p>{{ robe.description }}</p>
+            <p class="prix">{{ robe.prix_location }} DT/jour</p>
+            <p>Taille: {{ robe.get_taille_display }}</p>
+            <p>Couleur: {{ robe.couleur }}</p>
+            {% if robe.disponible %}
+            <span class="disponible">Disponible</span> <br>
+            <a href="{% url 'reserver_robe' %}" class="bouton">Réserver</a> {% else %}
+            <span class="indisponible">Indisponible</span> {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

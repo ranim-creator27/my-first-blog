@@ -1,0 +1,17 @@
+{% extends 'boutique/base.html' %} {% block title %}Ajouter une Robe{% endblock %} {% block content %}
+<div class="container">
+    <h2>Ajouter une Nouvelle Robe</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit">Ajouter la robe</button>
+        <a href="{% url 'nos_robes' %}">Annuler</a>
+    </form>
+
+</div>
+{% if user.is_authenticated %}
+<form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit">Se déconnecter</button>
+</form>
+{% endif %} {% endblock %}

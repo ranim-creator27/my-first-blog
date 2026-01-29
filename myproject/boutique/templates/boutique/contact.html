@@ -1,0 +1,23 @@
+{% extends 'boutique/base.html' %} {% block title %}Contact{% endblock %} {% block content %}
+<div class="container">
+    <h2 style="text-align: center; color: #a64ca6; margin: 40px 0;">Contactez-nous</h2>
+
+    <div class="contact-wrapper">
+        <div class="contact-info">
+            <h3>📞 Téléphone</h3>
+            <p>12 345 678</p>
+
+            <h3>📧 Email</h3>
+            <p>DressMe@gmail.com</p>
+        </div>
+    </div>
+
+    <h3 style="margin-top: 40px; color: #333;">Envoyez-nous un message</h3>
+
+    <form method="post" class="contact-form">
+        {% csrf_token %} {{ form.as_p }}
+
+        <button type="submit">Envoyer</button>
+    </form>
+</div>
+{% endblock %}

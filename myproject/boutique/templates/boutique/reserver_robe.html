@@ -1,0 +1,11 @@
+{% extends 'boutique/base.html' %} {% load static %} {% block title %}Reserver robe{% endblock %} {% block content %}
+<form method="post">
+    <h2>Louer une Robe</h2>
+    {% csrf_token %}
+
+    <label>Date début</label> {{ form.date_debut }}
+
+    <label>Date fin</label> {{ form.date_fin }}
+
+    <button type="submit">Envoyer</button>
+</form> {% endblock %}

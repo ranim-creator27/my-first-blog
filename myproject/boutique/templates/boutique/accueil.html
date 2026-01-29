@@ -1,0 +1,27 @@
+{% extends 'boutique/base.html' %} {% load static %} {% block title %}Accueil{% endblock %} {% block content %}
+<div class="hero">
+    <h2>Bienvenue chez DressMe</h2>
+    <p>Trouvez la robe de vos rêves pour votre jour spécial</p>
+    <a href="{% url 'nos_robes' %}">Découvrir nos robes</a>
+</div>
+
+<div class="container">
+    <h2>Nos Robes Disponibles</h2>
+    <div class="robes-grid">
+        {% for robe in robes %}
+        <div class="robe-card">
+            {% if robe.image %}
+            <!--<img src="{% static 'boutique/images/' %}{{ robe.image }}" alt="{{ robe.nom }}">-->
+            <img src="{{ robe.image.url }}" alt="{{ robe.nom }}"> {% else %}
+            <div class="no-image">Pas d'image</div>
+            {% endif %}
+            <h3>{{ robe.nom }}</h3>
+            <p>{{ robe.prix_location }} DT/jour</p>
+            <p>Taille: {{ robe.get_taille_display }}</p>
+            <p>Couleur: {{ robe.couleur }}</p>
+            <a href="{% url 'reserver_robe' %}" class="bouton">Réserver</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
